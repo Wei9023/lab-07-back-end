@@ -24,11 +24,10 @@ app.get('/location', (request, response) => {     // anon callback function
 // Need a route so client can request weather data
 app.get('/weather', getWeather);
 
-// TODO:
-// You will need to put a meetups route here that uses the meetups handler that you will create
+// Meetups route so client can request meetup data
 app.get('/meetups', getMeetups);
 
-// Need a catch-all route that invokes handle-Error() if bad request comes in
+// Catch-all route that invokes handle-Error() if bad request comes in
 app.use('*', (err, res) => {
   handleError(err, res);
 });
@@ -41,9 +40,9 @@ app.listen(PORT, () => console.log(`App is up on ${PORT}`));
 // **************************
 
 // Error handler
-function handleError(err, res) {
-  console.error(err);
-  if (res) res.status(500).send('Sorry, something went wrong');
+function handleError(err, response) { // takes an error and a response
+  console.error(err);            // logs the error to the console
+  if (response) response.status(500).send('Sorry, something went wrong'); // if the response is truthy, give it a status of '500' and send a message to the user
 }
 
 // Geocode lookup handler
