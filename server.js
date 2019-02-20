@@ -28,8 +28,8 @@ app.get('/weather', getWeather);
 app.get('/meetups', getMeetups);
 
 // Catch-all route that invokes handle-Error() if bad request comes in
-app.use('*', (err, res) => {
-  handleError(err, res);
+app.use('*', (err, response) => { // listen for all other routes (not '/location', '/weather', etc.)
+  handleError(err, response);     // call error handler and pass in error and response
 });
 
 // Make sure server is listening for requests
