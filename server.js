@@ -25,6 +25,7 @@ app.get('/weather', getWeather);
 
 // TODO:
 // You will need to put a meetups route here that uses the meetups handler that you will create
+app.get('/meetups', getMeetups);
 
 // Need a catch-all route that invokes handle-Error() if bad request comes in
 app.use('*', (err, res) => {
@@ -64,7 +65,6 @@ function getWeather(request, response) {
       const weatherSummaries = result.body.daily.data.map(day => {
         return new Weather(day)
       });
-
       response.send(weatherSummaries);
     })
     .catch(error => handleError(error, response));
@@ -73,6 +73,21 @@ function getWeather(request, response) {
 // TODO
 // Meetups route handler
 // This is where you will need to put the handler for your meetup route
+function getMeetups(request, response) {
+  const url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${process.env.MEETUPS_API_KEY}`;
+
+  console.log('getMeetups url:', url);
+
+  superagent.get(url)
+    .then(result => {
+      // console.log('result.events:', result.body.events);
+      const meetups = result.body.events.map(meetup => {
+        return new Meetups(meetup)
+      });
+      response.send(meetups);
+    })
+    .catch(error => handleError(error, response));
+}
 
 // **************************
 // Models
@@ -94,4 +109,11 @@ function Weather(day) {
 // TODO:
 // This is where you will need to put the constructor for your meetups data
 
-function Meetups() { }
+function Meetups(response) {
+  // console.log('meetup response:', response);
+  console.log('meetup response.link:', response.link);
+  this.link = response.link;
+  this.name = response.name;
+  this.creation_date = response.group.created;
+  this.host = response.group.name;
+}
