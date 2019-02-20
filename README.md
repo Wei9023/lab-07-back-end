@@ -78,11 +78,11 @@ Actual time needed to complete: 15 minutes
 ```
 Number and name of feature: 4. Meetups
 
-Estimate of time needed to complete: 11:25 am
+Estimate of time needed to complete: 1 hour, 30 minutes
 
-Start time: _____
+Start time: 11:25 am
 
-Finish time: _____
+Finish time: 1:30 pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2 hours
 ```
