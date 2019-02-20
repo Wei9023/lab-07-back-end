@@ -57,13 +57,21 @@ function searchToLatLong(query) {
 
 // Weather route handler
 function getWeather(resquest, response) {
-  const url = `https://api.darksky.net/forecast/${WEATHER_API_KEY}/${request.query.data.latitude},${request.data.longitude}`;
+  console.log('called getWeather');
+  console.log('request.query.data:', request.query.data);
+  const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${request.query.data.latitude},${request.data.longitude}`;
+
+  console.log('url:', url);
 
   superagent.get(url)
     .then(result => {
       const weatherSummaries = result.body.daily.data.map(day => {
         return new Weather(day)
       });
+
+      console.log('weatherSummaries:', weatherSummaries);
+
+
       response.send(weatherSummaries);
     })
     .catch(error => handleError(error, response));
