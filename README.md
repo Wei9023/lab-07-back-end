@@ -45,31 +45,31 @@ This project was done in collaboration with Vanessa Wei ([Wei9023](https://githu
 ```
 Number and name of feature: 1. Data formatting
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 30 minutes
 
-Start time: _____
+Start time: 9:30 am
 
-Finish time: _____
+Finish time: 10:30 am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hour
 ```
 ```
 Number and name of feature: 2. Locations
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 10:30 am
 
-Finish time: _____
+Finish time: 11:10 am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 40 minutes
 ```
 ```
 Number and name of feature: 3. Weather
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 11:10 am
 
 Finish time: _____
 
