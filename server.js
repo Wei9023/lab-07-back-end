@@ -5,6 +5,7 @@ require('dotenv').config();
 
 // Application dependencies
 const express = require('express');
+const superagent = require('superagent');
 const cors = require('cors');
 
 // Application setup
@@ -14,21 +15,22 @@ app.use(cors());
 
 // API ROUTES
 app.get('/location', (request, response) => {
-  const locationData = searchToLatLong(request.query.data);
-  response.send(locationData);
+  searchToLatLong(request.query.data)
+    .then(location => response.send(location))
+    .catch(error => handleError(error, response));
 });
 
 // Need a route so client can request weather data
-app.get('/weather', (request, response) => {
-  const weatherData = getWeather(request.query.data);
-  response.send(weatherData);
-});
+app.get('/weather', getWeather);
 
+// TODO:
+// You will need to put a meetups route here that uses the meetups handler that you will create
 
 // Need a catch-all route that invokes handle-Error() if bad request comes in
-app.use('*',(err, res) => {
+app.use('*', (err, res) => {
   handleError(err, res);
 });
+
 // Make sure server is listening for requests
 app.listen(PORT, () => console.log(`App is up on ${PORT}`));
 
