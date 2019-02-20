@@ -14,22 +14,22 @@ const app = express();
 app.use(cors());
 
 // API ROUTES
-app.get('/location', (request, response) => {
-  searchToLatLong(request.query.data)
-    .then(location => response.send(location))
-    .catch(error => handleError(error, response));
+// Location route
+app.get('/location', (request, response) => {     // anon callback function
+  searchToLatLong(request.query.data)             // calls geocode lookup handler
+    .then(location => response.send(location))    // then sends the location result
+    .catch(error => handleError(error, response));// and catches anything else with the error handler
 });
 
 // Need a route so client can request weather data
 app.get('/weather', getWeather);
 
-// TODO:
-// You will need to put a meetups route here that uses the meetups handler that you will create
+// Meetups route so client can request meetup data
 app.get('/meetups', getMeetups);
 
-// Need a catch-all route that invokes handle-Error() if bad request comes in
-app.use('*', (err, res) => {
-  handleError(err, res);
+// Catch-all route that invokes handle-Error() if bad request comes in
+app.use('*', (err, response) => { // listen for all other routes (not '/location', '/weather', etc.)
+  handleError(err, response);     // call error handler and pass in error and response
 });
 
 // Make sure server is listening for requests
@@ -40,9 +40,9 @@ app.listen(PORT, () => console.log(`App is up on ${PORT}`));
 // **************************
 
 // Error handler
-function handleError(err, res) {
-  console.error(err);
-  if (res) res.status(500).send('Sorry, something went wrong');
+function handleError(err, response) { // takes an error and a response
+  console.error(err);            // logs the error to the console
+  if (response) response.status(500).send('Sorry, something went wrong'); // if the response is truthy, give it a status of '500' and send a message to the user
 }
 
 // Geocode lookup handler
