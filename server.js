@@ -14,10 +14,11 @@ const app = express();
 app.use(cors());
 
 // API ROUTES
-app.get('/location', (request, response) => {
-  searchToLatLong(request.query.data)
-    .then(location => response.send(location))
-    .catch(error => handleError(error, response));
+// Location route
+app.get('/location', (request, response) => {     // anon callback function
+  searchToLatLong(request.query.data)             // calls geocode lookup handler
+    .then(location => response.send(location))    // then sends the location result
+    .catch(error => handleError(error, response));// and catches anything else with the error handler
 });
 
 // Need a route so client can request weather data
