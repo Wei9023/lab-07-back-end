@@ -71,14 +71,14 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 11:10 am
 
-Finish time: _____
+Finish time: 11:25 am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 15 minutes
 ```
 ```
 Number and name of feature: 4. Meetups
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 11:25 am
 
 Start time: _____
 
