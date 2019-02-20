@@ -40,6 +40,11 @@ This project was done in collaboration with Vanessa Wei ([Wei9023](https://githu
 
 ## Number and name of feature: 
 
+# lab-07-back-end
+
+```
+Number and name of feature: 1. Data formatting
+
 Estimate of time needed to complete: _____
 
 Start time: _____
@@ -47,3 +52,37 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
+```
+```
+Number and name of feature: 2. Locations
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+```
+```
+Number and name of feature: 3. Weather
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+```
+```
+Number and name of feature: 4. Meetups
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+```
