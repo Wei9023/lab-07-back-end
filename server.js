@@ -70,17 +70,12 @@ function getWeather(request, response) {
     .catch(error => handleError(error, response));
 }
 
-// TODO
 // Meetups route handler
-// This is where you will need to put the handler for your meetup route
 function getMeetups(request, response) {
   const url = `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&lon=${request.query.data.longitude}&page=20&lat=${request.query.data.latitude}&key=${process.env.MEETUPS_API_KEY}`;
 
-  console.log('getMeetups url:', url);
-
   superagent.get(url)
     .then(result => {
-      // console.log('result.events:', result.body.events);
       const meetups = result.body.events.map(meetup => {
         return new Meetups(meetup)
       });
@@ -106,14 +101,12 @@ function Weather(day) {
   this.time = new Date(day.time * 1000).toString().slice(0, 15);
 }
 
-// TODO:
-// This is where you will need to put the constructor for your meetups data
-
+// Constructor needed for function getMeetups()
 function Meetups(response) {
   // console.log('meetup response:', response);
   console.log('meetup response.link:', response.link);
   this.link = response.link;
   this.name = response.name;
-  this.creation_date = response.group.created;
+  this.creation_date = new Date(response.created).toString().slice(0, 15)
   this.host = response.group.name;
 }
